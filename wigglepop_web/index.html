@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wiggle Pop - Handmade Accessories</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Header/Navigation -->
+    <header class="header">
+        <div class="container">
+            <div class="nav-wrapper">
+                <div class="logo">
+                    <img src="wigglepop-logo.png" alt="WigglePop Logo" class="logo-img">
+                </div>
+                <nav class="nav-menu">
+                    <a href="index.html" class="nav-link active">Homepage</a>
+                    <a href="katalog.html" class="nav-link">Collection</a>
+                    <a href="Wishlist.html" class="nav-link">Wishlist</a>
+                    <a href="contact.html" class="nav-link">Contact</a>
+                    <a href="login.html" class="nav-link login-btn" id="navLoginBtn">Login/SignUp</a>
+                    <a href="#" class="nav-link logout-btn" id="navLogoutBtn" style="display: none;" onclick="handleLogout(event)">Logout</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Banner -->
+    <section class="hero-banner">
+        <div class="banner-content">
+            <h1 class="hero-title">Handmade with Love</h1>
+            <p class="hero-subtitle">Aksesoris Unik dari Paracord & Manik-Manik</p>
+            <a href="katalog.html" class="cta-button">Lihat Koleksi</a>
+        </div>
+    </section>
+
+    <!-- Best Sellers -->
+    <section class="best-sellers">
+        <div class="container">
+            <h2 class="section-title">Best Sellers</h2>
+            <div class="slider-wrapper">
+                <button class="slider-btn prev" onclick="slideProducts(-1)">&#10094;</button>
+                <div class="products-slider" id="productsSlider">
+                    <div class="product-card">
+                        <div class="product-image" style="background: linear-gradient(135deg, #88A2FF 0%, #AB9DFF 100%);">
+                            <img src="images/keychain/pastel.jpg" alt="Keychain Flower" style="width: 100%; height: 100%; object-fit: cover; border-radius: 15px;">
+                        </div>
+                        <h3 class="product-name">Pastel Keychain</h3>
+                        <p class="product-price">Rp 25.000</p>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-image" style="background: linear-gradient(135deg, #E3FC87 0%, #C0E0FF 100%);">
+                            <img src="images/phonestrap/rainbow-dream.jpg" alt="Phone Strap Daisy" style="width: 100%; height: 100%; object-fit: cover; border-radius: 15px;">
+                        </div>
+                        <h3 class="product-name">Phone Strap Daisy</h3>
+                        <p class="product-price">Rp 30.000</p>
+                    </div>
+                    <div class="product-card">
+                        <div class="product-image" style="background: linear-gradient(135deg, #FFB2E7 0%, #AB9DFF 100%);">
+                            <img src="images/bracelet/Bracelet Stars.jpg" alt="Bracelet Stars" style="width: 100%; height: 100%; object-fit: cover; border-radius: 15px;">
+                        </div>
+                        <h3 class="product-name">Bracelet Stars</h3>
+                        <p class="product-price">Rp 35.000</p>
+                    </div>
+                </div>
+                <button class="slider-btn next" onclick="slideProducts(1)">&#10095;</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about-section">
+        <div class="container">
+            <div class="about-content">
+                <h2 class="section-title">Tentang Wiggle Pop</h2>
+                <p class="about-text">
+                    Wiggle Pop adalah brand aksesoris handmade yang menghadirkan produk-produk unik dan penuh warna. 
+                    Setiap produk kami dibuat dengan tangan menggunakan tali paracord berkualitas tinggi dan manik-manik 
+                    lucu yang dipilih dengan cermat. Kami menawarkan berbagai pilihan aksesoris seperti keychain, phone strap, 
+                    bracelet, dan bag charm yang dapat mempercantik penampilan Anda sehari-hari.
+                </p>
+                <p class="about-text">
+                    Yang membuat Wiggle Pop spesial adalah Anda juga bisa memesan produk custom sesuai dengan selera dan 
+                    keinginan Anda! Dari pemilihan warna, bentuk manik-manik, hingga desain khusus, kami siap mewujudkan 
+                    aksesoris impian Anda. Setiap produk dibuat dengan penuh cinta dan perhatian terhadap detail.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 WigglePop Indonesia</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - Wiggle Pop</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Header/Navigation -->
+    <header class="header">
+        <div class="container">
+            <div class="nav-wrapper">
+                <div class="logo">
+                    <img src="wigglepop-logo.png" alt="WigglePop Logo" class="logo-img">
+                </div>
+                <nav class="nav-menu">
+                    <a href="index.html" class="nav-link">Homepage</a>
+                    <a href="katalog.html" class="nav-link">Collection</a>
+                    <a href="wishlist.html" class="nav-link">Wishlist</a>
+                    <a href="contact.html" class="nav-link active">Contact</a>
+                    <a href="login.html" class="nav-link login-btn" id="navLoginBtn">Login/SignUp</a>
+                    <a href="#" class="nav-link logout-btn" id="navLogoutBtn" style="display: none;" onclick="handleLogout(event)">Logout</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Contact Section -->
+    <section class="contact-section">
+        <div class="container">
+            <h1 class="page-title">Hubungi Kami</h1>
+            <p class="page-subtitle">Kami siap membantu Anda! Jangan ragu untuk menghubungi kami.</p>
+
+            <div class="contact-wrapper">
+                <div class="contact-info-cards">
+                    <!-- WhatsApp -->
+                    <div class="contact-card" style="background: linear-gradient(135deg, #88A2FF 0%, #AB9DFF 100%);">
+                        <div class="contact-icon">📱</div>
+                        <h3 class="contact-card-title">WhatsApp</h3>
+                        <p class="contact-detail">+62 812-3456-7890</p>
+                        <a href="https://wa.me/6281234567890" class="contact-link" target="_blank">Chat dengan Kami</a>
+                    </div>
+
+                    <!-- Email -->
+                    <div class="contact-card" style="background: linear-gradient(135deg, #E3FC87 0%, #C0E0FF 100%);">
+                        <div class="contact-icon">📧</div>
+                        <h3 class="contact-card-title">Email</h3>
+                        <p class="contact-detail">hello@wigglepop.id</p>
+                        <a href="mailto:hello@wigglepop.id" class="contact-link">Kirim Email</a>
+                    </div>
+
+                    <!-- Instagram -->
+                    <div class="contact-card" style="background: linear-gradient(135deg, #FFB2E7 0%, #AB9DFF 100%);">
+                        <div class="contact-icon">📷</div>
+                        <h3 class="contact-card-title">Instagram</h3>
+                        <p class="contact-detail">@wiggle.pop</p>
+                        <a href="https://instagram.com/wiggle.pop" class="contact-link" target="_blank">Follow Kami</a>
+                    </div>
+
+                    <!-- Alamat -->
+                    <div class="contact-card" style="background: linear-gradient(135deg, #C0E0FF 0%, #88A2FF 100%);">
+                        <div class="contact-icon">📍</div>
+                        <h3 class="contact-card-title">Alamat</h3>
+                        <p class="contact-detail">Jl. Mawar No. 123, Surabaya, Jawa Timur 60123</p>
+                        <a href="https://maps.google.com" class="contact-link" target="_blank">Lihat di Maps</a>
+                    </div>
+                </div>
+
+                <!-- Contact Form -->
+                <div class="contact-form-wrapper">
+                    <h2 class="form-section-title">Kirim Pesan</h2>
+                    <form class="contact-form" onsubmit="submitContactForm(event)">
+                        <div class="form-group">
+                            <label>Nama</label>
+                            <input type="text" required placeholder="Nama lengkap Anda">
+                        </div>
+                        <div class="form-group">
+                            <label>Email</label>
+                            <input type="email" required placeholder="email@example.com">
+                        </div>
+                        <div class="form-group">
+                            <label>Nomor Telepon</label>
+                            <input type="tel" required placeholder="08xxxxxxxxxx">
+                        </div>
+                        <div class="form-group">
+                            <label>Pesan</label>
+                            <textarea rows="5" required placeholder="Tulis pesan Anda di sini..."></textarea>
+                        </div>
+                        <button type="submit" class="submit-btn">Kirim Pesan</button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Business Hours -->
+            <div class="business-hours">
+                <h2 class="section-title">Jam Operasional</h2>
+                <div class="hours-grid">
+                    <div class="hours-item">
+                        <span class="day">Senin - Jumat</span>
+                        <span class="time">09.00 - 18.00 WIB</span>
+                    </div>
+                    <div class="hours-item">
+                        <span class="day">Sabtu</span>
+                        <span class="time">09.00 - 15.00 WIB</span>
+                    </div>
+                    <div class="hours-item">
+                        <span class="day">Minggu</span>
+                        <span class="time">Tutup</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 WigglePop Indonesia</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

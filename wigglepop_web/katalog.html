@@ -1,0 +1,732 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Collection - Wiggle Pop</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Category Cards */
+        .categories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+            margin-top: 50px;
+        }
+
+        .category-card {
+            background: white;
+            border-radius: 25px;
+            overflow: hidden;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+        }
+
+        .category-card:hover {
+            transform: translateY(-12px);
+            box-shadow: 0 15px 45px rgba(0, 0, 0, 0.2);
+        }
+
+        .category-image {
+            height: 280px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            background: none; 
+        }
+
+        .category-image-img {
+            width: 100%;  
+            height: 100%; 
+            object-fit: cover;
+            border-radius: 0;
+            transition: transform 0.3s;
+        }
+
+        .category-card:hover .category-image-img {
+            transform: scale(1.05);
+        }
+
+        .category-info {
+            padding: 30px;
+            text-align: center;
+        }
+
+        .category-name {
+            font-size: 28px;
+            font-weight: bold;
+            margin-bottom: 12px;
+            color: var(--color-text);
+        }
+
+        .category-description {
+            font-size: 16px;
+            color: var(--color-text-light);
+            margin-bottom: 20px;
+        }
+
+        .view-products-btn {
+            padding: 12px 30px;
+            background: linear-gradient(135deg, var(--color-blue-light), var(--color-purple));
+            color: white;
+            border: none;
+            border-radius: 25px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .view-products-btn:hover {
+            transform: scale(1.05);
+        }
+
+        /* Products View */
+        .products-view {
+            display: none;
+            padding: 60px 0;
+        }
+
+        .products-view.active {
+            display: block;
+        }
+
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 24px;
+            background: white;
+            color: var(--color-blue-deep);
+            border: 2px solid var(--color-blue-light);
+            border-radius: 25px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-bottom: 30px;
+        }
+
+        .back-button:hover {
+            background: var(--color-blue-light);
+            color: white;
+        }
+
+        .products-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .products-header h2 {
+            font-size: 42px;
+            background: linear-gradient(135deg, var(--color-blue-deep), var(--color-purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 10px;
+        }
+
+        .model-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+
+        .model-card:hover {
+            transform: translateY(-8px);
+        }
+
+        .model-image {
+            height: 220px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .model-image-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+        }
+
+        .model-badge {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            padding: 6px 12px;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            font-size: 12px;
+            font-weight: bold;
+            color: var(--color-blue-deep);
+        }
+
+        .model-info {
+            padding: 20px;
+        }
+
+        .model-name {
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: var(--color-text);
+        }
+
+        .model-rating {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 12px;
+            font-size: 14px;
+        }
+
+        .stars {
+            color: #fbbf24;
+        }
+
+        .rating-count {
+            color: var(--color-text-light);
+        }
+
+        .model-price {
+            font-size: 24px;
+            font-weight: bold;
+            color: var(--color-blue-deep);
+            margin-bottom: 15px;
+        }
+
+        .add-model-btn {
+            width: 100%;
+            padding: 12px;
+            background: linear-gradient(135deg, var(--color-blue-light), var(--color-purple));
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .add-model-btn:hover {
+            transform: scale(1.05);
+        }
+
+        /* Color Selection Modal */
+        .color-modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.6);
+            align-items: center;
+            justify-content: center;
+        }
+
+        .color-modal.show {
+            display: flex;
+        }
+
+        .color-modal-content {
+            background: white;
+            padding: 40px;
+            border-radius: 25px;
+            max-width: 500px;
+            width: 90%;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+            animation: slideIn 0.3s ease;
+        }
+
+        .close-modal {
+            position: absolute;
+            right: 20px;
+            top: 20px;
+            font-size: 32px;
+            font-weight: bold;
+            color: #999;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .close-modal:hover {
+            color: #333;
+        }
+
+        .color-modal-title {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: var(--color-text);
+        }
+
+        .selected-product-info {
+            background: #f7fafc;
+            padding: 20px;
+            border-radius: 15px;
+            margin-bottom: 25px;
+        }
+
+        .selected-product-name {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+
+        .selected-product-price {
+            font-size: 20px;
+            font-weight: bold;
+            color: var(--color-blue-deep);
+        }
+
+        .color-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+        .color-option {
+            aspect-ratio: 1;
+            border-radius: 15px;
+            border: 3px solid transparent;
+            cursor: pointer;
+            transition: all 0.3s;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .color-option:hover {
+            transform: scale(1.1);
+            border-color: var(--color-blue-deep);
+        }
+
+        .color-option.selected {
+            border-color: var(--color-blue-deep);
+            box-shadow: 0 0 0 2px white, 0 0 0 4px var(--color-blue-deep);
+        }
+
+        .color-option.selected::after {
+            content: "✓";
+            position: absolute;
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .color-name {
+            font-size: 12px;
+            text-align: center;
+            margin-top: 8px;
+            color: var(--color-text);
+        }
+
+        .color-actions {
+            display: flex;
+            gap: 15px;
+            margin-top: 25px;
+        }
+
+        .cancel-color-btn,
+        .confirm-color-btn {
+            flex: 1;
+            padding: 15px;
+            border: none;
+            border-radius: 12px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .cancel-color-btn {
+            background: #e2e8f0;
+            color: var(--color-text);
+        }
+
+        .confirm-color-btn {
+            background: linear-gradient(135deg, var(--color-blue-light), var(--color-purple));
+            color: white;
+        }
+
+        .cancel-color-btn:hover,
+        .confirm-color-btn:hover {
+            transform: scale(1.05);
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateY(-50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .categories-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .category-image {
+                height: 220px;
+            }
+
+            .color-modal-content {
+                padding: 30px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header/Navigation -->
+    <header class="header">
+        <div class="container">
+            <div class="nav-wrapper">
+                <div class="logo">
+                    <img src="wigglepop-logo.png" alt="WigglePop Logo" class="logo-img">
+                </div>
+                <nav class="nav-menu">
+                    <a href="index.html" class="nav-link">Homepage</a>
+                    <a href="katalog.html" class="nav-link active">Collection</a>
+                    <a href="wishlist.html" class="nav-link">Wishlist</a>
+                    <a href="contact.html" class="nav-link">Contact</a>
+                    <a href="login.html" class="nav-link login-btn" id="navLoginBtn">Login/SignUp</a>
+                    <a href="#" class="nav-link logout-btn" id="navLogoutBtn" style="display: none;" onclick="handleLogout(event)">Logout</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Categories Section -->
+    <section class="katalog-section" id="categoriesSection">
+        <div class="container">
+            <h1 class="page-title">Our Collection</h1>
+            <p class="page-subtitle">Pilih kategori aksesori favoritmu!</p>
+
+            <div class="categories-grid">
+                <!-- Phone Strap Category -->
+                <div class="category-card" onclick="showCategory('phonestrap')">
+                    <div class="category-image">
+                        <img src="images/categories/phonestrap.jpg" alt="Phone Strap" class="category-image-img">
+                    </div>
+                    <div class="category-info">
+                        <h3 class="category-name">Phone Strap</h3>
+                        <p class="category-description">Koleksi phone strap lucu dan fungsional</p>
+                        <button class="view-products-btn">Lihat Produk</button>
+                    </div>
+                </div>
+
+                <!-- Keychain Category -->
+                <div class="category-card" onclick="showCategory('keychain')">
+                    <div class="category-image">
+                        <img src="images/categories/keychain.jpg" alt="Keychain" class="category-image-img">
+                    </div>
+                    <div class="category-info">
+                        <h3 class="category-name">Keychain</h3>
+                        <p class="category-description">Gantungan kunci dengan berbagai desain menarik</p>
+                        <button class="view-products-btn">Lihat Produk</button>
+                    </div>
+                </div>
+
+                <!-- Bracelet Category -->
+                <div class="category-card" onclick="showCategory('bracelet')">
+                    <div class="category-image">
+                        <img src="images/categories/bracelet.jpg" alt="Bracelet" class="category-image-img">
+                    </div>
+                    <div class="category-info">
+                        <h3 class="category-name">Bracelet</h3>
+                        <p class="category-description">Gelang cantik untuk melengkapi penampilanmu</p>
+                        <button class="view-products-btn">Lihat Produk</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products View -->
+    <section class="products-view" id="productsView">
+        <div class="container">
+            <button class="back-button" onclick="backToCategories()">
+                ← Kembali ke Kategori
+            </button>
+            
+            <div class="products-header">
+                <h2 id="categoryTitle"></h2>
+                <p class="page-subtitle" id="categorySubtitle"></p>
+            </div>
+
+            <div class="products-grid" id="productsGrid"></div>
+        </div>
+    </section>
+
+    <!-- Color Selection Modal -->
+    <div class="color-modal" id="colorModal">
+        <div class="color-modal-content">
+            <span class="close-modal" onclick="closeColorModal()">&times;</span>
+            <h3 class="color-modal-title">Pilih Warna</h3>
+            
+            <div class="selected-product-info">
+                <div class="selected-product-name" id="selectedProductName"></div>
+                <div class="selected-product-price" id="selectedProductPrice"></div>
+            </div>
+
+            <div class="color-options" id="colorOptions"></div>
+
+            <div class="color-actions">
+                <button class="cancel-color-btn" onclick="closeColorModal()">Batal</button>
+                <button class="confirm-color-btn" onclick="confirmAddToCart()">Tambah ke Keranjang</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 WigglePop Indonesia</p>
+        </div>
+    </footer>
+
+    <!-- Load script.js FIRST -->
+    <script src="script.js"></script>
+    
+    <!-- Then inline catalog scripts -->
+    <script>
+        // Product Data
+        const productData = {
+            phonestrap: [
+                { name: "Daisy Chain Strap", price: 30000, rating: 4.8, reviews: 45, image: "images/phonestrap/rainbow-dream.jpg", gradient: "linear-gradient(135deg, #FFB2E7 0%, #AB9DFF 100%)" },
+                { name: "Stars Night Strap", price: 32000, rating: 4.9, reviews: 52, image: "images/phonestrap/stars-night.jpg", gradient: "linear-gradient(135deg, #253A82 0%, #88A2FF 100%)" },
+                { name: "Rainbow Dream Strap", price: 33000, rating: 4.7, reviews: 38, image: "images/phonestrap/daisy-chain.jpg", gradient: "linear-gradient(135deg, #E3FC87 0%, #C0E0FF 100%)" },
+                { name: "Cherry Blossom Strap", price: 31000, rating: 4.8, reviews: 41, image: "images/phonestrap/cherry blossom strap.jpg", gradient: "linear-gradient(135deg, #FFB2E7 0%, #FFE5F1 100%)" },
+                { name: "Ocean Wave Strap", price: 34000, rating: 4.9, reviews: 48, image: "images/phonestrap/ocean-wave.jpg", gradient: "linear-gradient(135deg, #88A2FF 0%, #C0E0FF 100%)" },
+                { name: "Butterfly Garden Strap", price: 35000, rating: 4.7, reviews: 36, image: "images/phonestrap/butterfly-garden.jpg", gradient: "linear-gradient(135deg, #AB9DFF 0%, #E3FC87 100%)" },
+                { name: "Sunset Glow Strap", price: 32000, rating: 4.8, reviews: 44, image: "images/phonestrap/Sunset Glow Strap.jpg", gradient: "linear-gradient(135deg, #FFB2E7 0%, #E3FC87 100%)" },
+                { name: "Moon Phases Strap", price: 33000, rating: 4.9, reviews: 50, image: "images/phonestrap/moon-phases.jpg", gradient: "linear-gradient(135deg, #253A82 0%, #AB9DFF 100%)" },
+                { name: "Flower Power Strap", price: 31000, rating: 4.6, reviews: 33, image: "images/phonestrap/flower-power.jpg", gradient: "linear-gradient(135deg, #E3FC87 0%, #FFB2E7 100%)" },
+                { name: "Sparkle Magic Strap", price: 36000, rating: 4.9, reviews: 55, image: "images/phonestrap/sparkle-magic.jpg", gradient: "linear-gradient(135deg, #AB9DFF 0%, #C0E0FF 100%)" }
+            ],
+            keychain: [
+                { name: "Pastel Keychain", price: 25000, rating: 4.8, reviews: 62, image: "images/keychain/pastel.jpg", gradient: "linear-gradient(135deg, #88A2FF 0%, #AB9DFF 100%)" },
+                { name: "Rainbow Keychain", price: 28000, rating: 4.9, reviews: 58, image: "images/keychain/rainbow keychain.jpg", gradient: "linear-gradient(135deg, #E3FC87 0%, #C0E0FF 100%)" },
+                { name: "Ribbon Keychain", price: 26000, rating: 4.7, reviews: 47, image: "images/keychain/ribbon.jpg", gradient: "linear-gradient(135deg, #FFB2E7 0%, #AB9DFF 100%)" },
+                { name: "Star Keychain", price: 27000, rating: 4.8, reviews: 53, image: "images/keychain/star.jpg", gradient: "linear-gradient(135deg, #253A82 0%, #88A2FF 100%)" },
+                { name: "Cloud Keychain", price: 29000, rating: 4.9, reviews: 61, image: "images/keychain/Cloud Keychain.jpg", gradient: "linear-gradient(135deg, #C0E0FF 0%, #88A2FF 100%)" },
+                { name: "Butterfly Keychain", price: 28000, rating: 4.7, reviews: 44, image: "images/keychain/Butterfly Keychain.jpg", gradient: "linear-gradient(135deg, #AB9DFF 0%, #E3FC87 100%)" },
+                { name: "Smiley Keychain", price: 26000, rating: 4.8, reviews: 56, image: "images/keychain/smiley.jpg", gradient: "linear-gradient(135deg, #E3FC87 0%, #FFB2E7 100%)" },
+                { name: "Moon Keychain", price: 27000, rating: 4.9, reviews: 49, image: "images/keychain/Moon Keychain.jpg", gradient: "linear-gradient(135deg, #253A82 0%, #AB9DFF 100%)" },
+                { name: "Cherry Keychain", price: 25000, rating: 4.6, reviews: 39, image: "images/keychain/cherry.jpg", gradient: "linear-gradient(135deg, #FFB2E7 0%, #E3FC87 100%)" },
+                { name: "Mario Keychain", price: 30000, rating: 4.9, reviews: 67, image: "images/keychain/Mario Keychain.jpg", gradient: "linear-gradient(135deg, #AB9DFF 0%, #C0E0FF 100%)" }
+            ],
+            bracelet: [
+                { name: "Pastel Dream Bracelet", price: 35000, rating: 4.9, reviews: 71, image: "images/bracelet/pastel-dream.jpg", gradient: "linear-gradient(135deg, #C0E0FF 0%, #E3FC87 100%)" },
+                { name: "Butterfly Charm Bracelet", price: 38000, rating: 4.8, reviews: 64, image: "images/bracelet/butterfly-charm.jpg", gradient: "linear-gradient(135deg, #AB9DFF 0%, #FFB2E7 100%)" },
+                { name: "Ocean Beads Bracelet", price: 36000, rating: 4.7, reviews: 55, image: "images/bracelet/ocean-beads.jpg", gradient: "linear-gradient(135deg, #88A2FF 0%, #C0E0FF 100%)" },
+                { name: "Rainbow Pearl Bracelet", price: 37000, rating: 4.9, reviews: 68, image: "images/bracelet/rainbow-pearl.jpg", gradient: "linear-gradient(135deg, #E3FC87 0%, #FFB2E7 100%)" },
+                { name: "Flower Garden Bracelet", price: 39000, rating: 4.8, reviews: 62, image: "images/bracelet/flower-garden.jpg", gradient: "linear-gradient(135deg, #FFB2E7 0%, #AB9DFF 100%)" },
+                { name: "Star Galaxy Bracelet", price: 40000, rating: 4.9, reviews: 73, image: "images/bracelet/star-galaxy.jpg", gradient: "linear-gradient(135deg, #253A82 0%, #88A2FF 100%)" },
+                { name: "Crystal Clear Bracelet", price: 38000, rating: 4.7, reviews: 58, image: "images/bracelet/crystal-clear.jpg", gradient: "linear-gradient(135deg, #C0E0FF 0%, #AB9DFF 100%)" },
+                { name: "Sunset Glow Bracelet", price: 37000, rating: 4.8, reviews: 60, image: "images/bracelet/sunset-glow.jpg", gradient: "linear-gradient(135deg, #FFB2E7 0%, #E3FC87 100%)" },
+                { name: "Heart Love Bracelet", price: 36000, rating: 4.9, reviews: 69, image: "images/bracelet/heart-love.jpg", gradient: "linear-gradient(135deg, #FFB2E7 0%, #C0E0FF 100%)" },
+                { name: "Magic Sparkle Bracelet", price: 42000, rating: 4.9, reviews: 78, image: "images/bracelet/magic-sparkle.jpg", gradient: "linear-gradient(135deg, #AB9DFF 0%, #E3FC87 100%)" }
+            ]
+        };
+
+        const colorOptions = [
+            { name: "Pink", value: "#FFB2E7" },
+            { name: "Purple", value: "#AB9DFF" },
+            { name: "Blue", value: "#88A2FF" },
+            { name: "Sky", value: "#C0E0FF" },
+            { name: "Neon", value: "#E3FC87" },
+            { name: "Navy", value: "#253A82" },
+            { name: "White", value: "#FFFFFF" },
+            { name: "Black", value: "#2D3748" }
+        ];
+
+        let currentProduct = null;
+        let selectedColor = null;
+
+        function showCategory(category) {
+            document.getElementById('categoriesSection').style.display = 'none';
+            document.getElementById('productsView').classList.add('active');
+
+            const titles = {
+                phonestrap: { title: "Phone Strap Collection", subtitle: "Pilih phone strap favoritmu!" },
+                keychain: { title: "Keychain Collection", subtitle: "Temukan gantungan kunci yang sempurna!" },
+                bracelet: { title: "Bracelet Collection", subtitle: "Gelang cantik untuk melengkapi gayamu!" }
+            };
+
+            document.getElementById('categoryTitle').textContent = titles[category].title;
+            document.getElementById('categorySubtitle').textContent = titles[category].subtitle;
+
+            const productsGrid = document.getElementById('productsGrid');
+            productsGrid.innerHTML = '';
+
+            productData[category].forEach(function(product) {
+                const card = document.createElement('div');
+                card.className = 'model-card';
+                
+                const starsFull = '★'.repeat(Math.floor(product.rating));
+                const starsEmpty = '☆'.repeat(5 - Math.floor(product.rating));
+                
+                card.innerHTML = `
+                    <div class="model-image" style="background: ${product.gradient};">
+                        <img src="${product.image}" alt="${product.name}" class="model-image-img">
+                        <span class="model-badge">NEW</span>
+                    </div>
+                    <div class="model-info">
+                        <h3 class="model-name">${product.name}</h3>
+                        <div class="model-rating">
+                            <span class="stars">${starsFull}${starsEmpty}</span>
+                            <span class="rating-count">${product.rating} (${product.reviews} reviews)</span>
+                        </div>
+                        <p class="model-price">Rp ${product.price.toLocaleString('id-ID')}</p>
+                        <button class="add-model-btn" onclick='openColorModal(${JSON.stringify(product)})'>
+                            Tambah ke Keranjang
+                        </button>
+                    </div>
+                `;
+                productsGrid.appendChild(card);
+            });
+        }
+
+        function backToCategories() {
+            document.getElementById('categoriesSection').style.display = 'block';
+            document.getElementById('productsView').classList.remove('active');
+            window.scrollTo(0, 0);
+        }
+
+        function openColorModal(product) {
+            currentProduct = product;
+            selectedColor = null;
+
+            document.getElementById('selectedProductName').textContent = product.name;
+            document.getElementById('selectedProductPrice').textContent = `Rp ${product.price.toLocaleString('id-ID')}`;
+
+            const colorOptionsContainer = document.getElementById('colorOptions');
+            colorOptionsContainer.innerHTML = '';
+
+            colorOptions.forEach(function(color) {
+                const colorDiv = document.createElement('div');
+                colorDiv.className = 'color-option';
+                colorDiv.style.background = color.value;
+                if (color.value === '#FFFFFF') {
+                    colorDiv.style.border = '2px solid #e2e8f0';
+                }
+                colorDiv.onclick = function() {
+                    selectColor(color.value, colorDiv);
+                };
+                
+                const colorName = document.createElement('div');
+                colorName.className = 'color-name';
+                colorName.textContent = color.name;
+                
+                const wrapper = document.createElement('div');
+                wrapper.style.textAlign = 'center';
+                wrapper.appendChild(colorDiv);
+                wrapper.appendChild(colorName);
+                
+                colorOptionsContainer.appendChild(wrapper);
+            });
+
+            document.getElementById('colorModal').classList.add('show');
+        }
+
+        function selectColor(color, element) {
+            selectedColor = color;
+            const allOptions = document.querySelectorAll('.color-option');
+            allOptions.forEach(function(el) {
+                el.classList.remove('selected');
+            });
+            element.classList.add('selected');
+        }
+
+        function closeColorModal() {
+            document.getElementById('colorModal').classList.remove('show');
+            currentProduct = null;
+            selectedColor = null;
+        }
+
+        function confirmAddToCart() {
+            if (!selectedColor) {
+                alert('Silakan pilih warna terlebih dahulu!');
+                return;
+            }
+
+            const savedUser = sessionStorage.getItem("wigglePopUser");
+            if (!savedUser) {
+                alert("Anda harus login untuk menambahkan produk ke keranjang!");
+                setTimeout(function() {
+                    window.location.href = 'login.html';
+                }, 1500);
+                return;
+            }
+
+            let cart = [];
+            const savedCart = sessionStorage.getItem("wigglePopCart");
+            if (savedCart) {
+                cart = JSON.parse(savedCart);
+            }
+
+            const cartItem = {
+                name: currentProduct.name + ' (' + getColorName(selectedColor) + ')',
+                price: currentProduct.price,
+                image: currentProduct.image,
+                color: selectedColor,
+                quantity: 1
+            };
+
+            let itemFound = false;
+            for (let i = 0; i < cart.length; i++) {
+                if (cart[i].name === currentProduct.name && cart[i].color === selectedColor) {
+                    cart[i].quantity += 1;
+                    itemFound = true;
+                    break;
+                }
+            }
+
+            if (!itemFound) {
+                cart.push(cartItem);
+            }
+
+            sessionStorage.setItem("wigglePopCart", JSON.stringify(cart));
+            showNotification(`${currentProduct.name} dengan warna ${getColorName(selectedColor)} telah ditambahkan ke keranjang!`);
+            closeColorModal();
+        }
+
+        function getColorName(color) {
+            for (let i = 0; i < colorOptions.length; i++) {
+                if (colorOptions[i].value === color) {
+                    return colorOptions[i].name;
+                }
+            }
+        }
+
+        function showNotification(message) {
+            const notification = document.getElementById('notification');
+            notification.textContent = message;
+            notification.classList.add('show');
+
+            setTimeout(function() {
+                notification.classList.remove('show');
+            }, 3000);
+        }
+    </script>
+</body>
+
+</html>
