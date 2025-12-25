@@ -3,36 +3,22 @@
 Wiggle Pop adalah website e-commerce sederhana berbasis HTML, CSS, PHP, dan MySQL yang digunakan untuk menjual aksesoris handmade seperti gelang dan bag charm dengan tampilan yang ceria dan modern.
 
 ✨ Fitur Utama
-
-Halaman beranda dengan katalog produk
-
-Kategori produk (Bracelet, Bag Charm)
-
-Halaman detail & checkout produk
-
-Proses checkout menggunakan PHP
-
-Halaman kontak
-
-Tampilan responsif dan ringan
-
-Manajemen gambar produk
+1. Halaman beranda dengan katalog produk
+2. Kategori produk (Bracelet, Bag Charm)
+3. Halaman detail & checkout produk
+4. Proses checkout menggunakan PHP
+5. Halaman kontak
+6. Tampilan responsif dan ringan
+7. Manajemen gambar produk
 
 🛠️ Teknologi yang Digunakan
-
 Frontend:
-
-HTML5
-
-CSS3
-
+- HTML5
+- CSS3
 Backend:
-
-PHP (Native)
-
+- PHP (Native)
 Database:
-
-MySQL
+- MySQL
 
 📂 Struktur Folder
 wigglepop_web/
@@ -48,28 +34,17 @@ wigglepop_web/
 └── wigglepop-logo.png
 
 ⚙️ Cara Menjalankan Project
-
-Pastikan sudah menginstall XAMPP / Laragon / WAMP
-
-Salin folder wigglepop_web ke direktori:
-
-htdocs/
-
-
-Buat database MySQL sesuai konfigurasi di file PHP
-
-Jalankan server Apache & MySQL
-
-Buka browser dan akses:
-
-http://localhost/wigglepop_web
+1. Pastikan sudah menginstall XAMPP / Laragon / WAMP
+2. Salin folder wigglepop_web ke direktori:
+   htdocs/
+3. Buat database MySQL sesuai konfigurasi di file PHP
+4. Jalankan server Apache & MySQL
+5. Buka browser dan akses:
+   http://localhost/wigglepop_web
 
 📝 Catatan
-
 Project ini cocok untuk pembelajaran website e-commerce sederhana
-
 Belum menggunakan framework atau sistem login
-
 Dapat dikembangkan dengan fitur admin, payment gateway, dan keamanan tambahan
 
 📌 Author
