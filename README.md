@@ -1,26 +1,38 @@
-🎀Wiggle Pop – Handmade Accessories Website
+# 🎀 Wiggle Pop – Website E-Commerce Aksesoris Handmade
+## Proyek Akhir Mata Kuliah
 
-Wiggle Pop adalah website e-commerce sederhana berbasis HTML, CSS, PHP, dan MySQL yang digunakan untuk menjual aksesoris handmade seperti gelang dan bag charm dengan tampilan yang ceria dan modern.
+## 📌 Deskripsi Proyek
+Wiggle Pop merupakan sebuah website e-commerce sederhana yang dikembangkan sebagai Proyek Akhir Mata Kuliah.  
+Website ini dibangun menggunakan HTML, CSS, PHP, dan MySQL untuk menjual aksesoris handmade seperti gelang dan bag charm dengan tampilan sederhana, ceria, dan responsif.
 
-**✨ Fitur Utama**
-1. Halaman beranda dengan katalog produk
-2. Kategori produk (Bracelet, Bag Charm)
-3. Halaman detail & checkout produk
-4. Proses checkout menggunakan PHP
-5. Halaman kontak
-6. Tampilan responsif dan ringan
-7. Manajemen gambar produk
+## 🎯 Tujuan Pembuatan
+- Menerapkan konsep dasar pengembangan web frontend dan backend
+- Mengimplementasikan koneksi database MySQL menggunakan PHP
+- Membangun website e-commerce sederhana tanpa framework
+- Memenuhi syarat penilaian Proyek Akhir Mata Kuliah
 
-**🛠️ Teknologi yang Digunakan**
-Frontend:
+## ✨ Fitur Utama
+- Halaman beranda dengan katalog produk
+- Kategori produk (Bracelet dan Bag Charm)
+- Halaman detail produk dan checkout
+- Proses checkout menggunakan PHP
+- Halaman kontak
+- Tampilan responsif dan ringan
+- Manajemen gambar produk
+
+## 🛠️ Teknologi yang Digunakan
+
+### Frontend
 - HTML5
 - CSS3
-Backend:
+
+### Backend
 - PHP (Native)
-Database:
+
+### Database
 - MySQL
 
-📂 Struktur Folder
+## 📂 Struktur Folder Project
 wigglepop_web/
 ├── images/
 │   ├── bracelet/
@@ -33,24 +45,25 @@ wigglepop_web/
 ├── style.css
 └── wigglepop-logo.png
 
-⚙️ **Cara Menjalankan Project**
-1. Pastikan sudah menginstall XAMPP / Laragon / WAMP
-2. Salin folder wigglepop_web ke direktori:
+## ⚙️ Cara Menjalankan Program
+1. Install XAMPP / Laragon / WAMP
+2. Salin folder wigglepop_web ke dalam direktori:
    htdocs/
-3. Buat database MySQL sesuai konfigurasi di file PHP
-4. Jalankan server Apache & MySQL
-5. Buka browser dan akses:
+3. Buat database MySQL sesuai konfigurasi pada file PHP
+4. Jalankan Apache dan MySQL
+5. Akses aplikasi melalui browser:
    http://localhost/wigglepop_web
 
-📝 **Catatan**
-Project ini cocok untuk pembelajaran website e-commerce sederhana
-Belum menggunakan framework atau sistem login
-Dapat dikembangkan dengan fitur admin, payment gateway, dan keamanan tambahan
+## 📝 Catatan
+- Website dikembangkan tanpa framework
+- Belum tersedia sistem login dan dashboard admin
+- Website dapat dikembangkan lebih lanjut dengan fitur tambahan
 
-📌 **Author**
-Elia Rifana Rif'an (24091397139)
-Berliana Nidia Meiningrum (24091397142)
-Anindya Calista Raniah (24091397152)
-Frysa Nayla Ayu (24091397162)
+## 👩‍💻 Tim Pengembang
+- Elia Rifana Rif'an (24091397139)
+- Berliana Nidia Meiningrum (24091397142)
+- Anindya Calista Raniah (24091397152)
+- Frysa Nayla Ayu (24091397162)
 
-Project Website Handmade Accessories – Wiggle Pop 💖
+## 📚 Penutup
+Website Wiggle Pop dibuat sebagai media pembelajaran dan pemenuhan tugas Proyek Akhir Mata Kuliah.
