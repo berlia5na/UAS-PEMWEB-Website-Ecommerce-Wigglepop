@@ -1,8 +1,8 @@
-🎀 Wiggle Pop – Handmade Accessories Website
+🎀** Wiggle Pop – Handmade Accessories Website**
 
 Wiggle Pop adalah website e-commerce sederhana berbasis HTML, CSS, PHP, dan MySQL yang digunakan untuk menjual aksesoris handmade seperti gelang dan bag charm dengan tampilan yang ceria dan modern.
 
-✨ Fitur Utama
+**✨ Fitur Utama**
 1. Halaman beranda dengan katalog produk
 2. Kategori produk (Bracelet, Bag Charm)
 3. Halaman detail & checkout produk
@@ -11,7 +11,7 @@ Wiggle Pop adalah website e-commerce sederhana berbasis HTML, CSS, PHP, dan MySQ
 6. Tampilan responsif dan ringan
 7. Manajemen gambar produk
 
-🛠️ Teknologi yang Digunakan
+**🛠️ Teknologi yang Digunakan**
 Frontend:
 - HTML5
 - CSS3
@@ -33,7 +33,7 @@ wigglepop_web/
 ├── style.css
 └── wigglepop-logo.png
 
-⚙️ Cara Menjalankan Project
+⚙️ **Cara Menjalankan Project**
 1. Pastikan sudah menginstall XAMPP / Laragon / WAMP
 2. Salin folder wigglepop_web ke direktori:
    htdocs/
@@ -42,12 +42,12 @@ wigglepop_web/
 5. Buka browser dan akses:
    http://localhost/wigglepop_web
 
-📝 Catatan
+📝 **Catatan**
 Project ini cocok untuk pembelajaran website e-commerce sederhana
 Belum menggunakan framework atau sistem login
 Dapat dikembangkan dengan fitur admin, payment gateway, dan keamanan tambahan
 
-📌 Author
+📌 **Author**
 Elia Rifana Rif'an (24091397139)
 Berliana Nidia Meiningrum (24091397142)
 Anindya Calista Raniah (24091397152)
