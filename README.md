@@ -1,4 +1,4 @@
-🎀** Wiggle Pop – Handmade Accessories Website**
+🎀Wiggle Pop – Handmade Accessories Website
 
 Wiggle Pop adalah website e-commerce sederhana berbasis HTML, CSS, PHP, dan MySQL yang digunakan untuk menjual aksesoris handmade seperti gelang dan bag charm dengan tampilan yang ceria dan modern.
 
